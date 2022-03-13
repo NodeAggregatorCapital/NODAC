@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono:regular,bold,italic&subset=latin,latin-ext");
+
+.headerFont {
+  font-family: "Share Tech Mono";
+  font-size: 30px;
+  text-align: center;
+}
+
+.selectedCoin {
+  border: blue thick dashed;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
