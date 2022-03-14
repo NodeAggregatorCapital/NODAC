@@ -10,7 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "author": "",
+  "author": "Inthernar",
   "license": "ISC",
   "dependencies": {
     "@web3-react/core": "^6.1.9",
