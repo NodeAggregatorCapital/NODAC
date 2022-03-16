@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Menu, Icon } from "semantic-ui-react";
-
 import { useWeb3React } from "@web3-react/core";
-import { injected } from "./wallet/connectors";
 
 export default (props) => {
   const { active, account, library, connector, activate, deactivate } =

@@ -33,16 +33,18 @@ export default function Home(props) {
           <Grid textAlign="center">
             <Grid.Row columns={2}>
               <Grid.Column>
-                <button onClick={connect} style={{ padding: "20px" }}>
-                  Connect To
-                  <br />
+                <Button
+                  onClick={connect}
+                  style={{ padding: "10px" }}
+                  color="blue"
+                >
                   <img
                     src="./images/Metamask-logo.svg"
                     alt="my image"
                     width="260px"
-                    height="50px"
+                    height="30px"
                   />
-                </button>
+                </Button>
               </Grid.Column>
             </Grid.Row>
           </Grid>
