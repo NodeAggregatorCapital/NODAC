@@ -154,7 +154,7 @@ class StakePlay extends Component {
                 textAlign: "center",
               }}
             >
-              Your streak
+              {streak > 0 ? "Your streak" : ""}
             </div>
           </Grid.Column>
           <Grid.Column
