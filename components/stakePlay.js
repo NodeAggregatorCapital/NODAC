@@ -101,7 +101,7 @@ class StakePlay extends Component {
       : "You're staking TAILS!!!";
 
     return (
-      <Grid centered style={{ marginTop: "40px", marginBottom: "20px" }}>
+      <Grid centered style={{ marginTop: "40px" }}>
         <Grid.Row
           columns={7}
           verticalAlign="bottom"
