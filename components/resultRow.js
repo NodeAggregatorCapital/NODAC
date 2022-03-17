@@ -26,12 +26,11 @@ class ResultRow extends Component {
         </Cell>
         <Cell style={{ textAlign: "center" }}>
           {stake._settled === true ? (
-            <Icon color="blue" name="check" />
+            <Icon name="check" style={{ color: "var(--dark-color)" }} />
           ) : (
             <Icon
-              color="blue"
               name="shopping cart"
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", color: "var(--dark-color)" }}
               onClick={onResponse}
               stakeid={id + 1}
             />

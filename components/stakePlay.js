@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { Grid, Button, Form, Message, Image } from "semantic-ui-react";
+import TypeAnimation from "react-type-animation";
 import web3 from "../Blockchain/web3";
 import flip from "../Blockchain/flip";
 
 class StakePlay extends Component {
-  state = { stakeAmount: "", errorMsg: "", loading: false };
+  state = {
+    stakeAmount: "",
+    stakeMessage: "Awaiting user selection...",
+    errorMsg: "",
+    loading: false,
+  };
 
   onSubmit = async (event) => {
     event.preventDefault(); //prevents default action
@@ -105,7 +111,7 @@ class StakePlay extends Component {
             style={{
               textAlign: "center",
               fontWeight: this.state.buttonHeads ? "bold" : "normal",
-              color: this.state.buttonHeads ? "blue" : "black",
+              color: this.state.buttonHeads ? "var(--light-color)" : "",
               textDecoration: this.state.buttonHeads ? "overline" : "none",
             }}
           >
@@ -116,6 +122,7 @@ class StakePlay extends Component {
               className={this.state.buttonHeads ? "selectedCoin" : ""}
               onClick={() => {
                 this.setState({
+                  buttonTails: false,
                   buttonHeads: true,
                   stakeMessage: stakeHeadsMsg,
                 });
@@ -160,18 +167,19 @@ class StakePlay extends Component {
           <Grid.Column
             style={{
               textAlign: "center",
-              fontWeight: this.state.buttonHeads ? "normal" : "bold",
-              color: this.state.buttonHeads ? "black" : "blue",
-              textDecoration: this.state.buttonHeads ? "none" : "overline",
+              fontWeight: this.state.buttonTails ? "bold" : "normal",
+              color: this.state.buttonTails ? "var(--light-color)" : "",
+              textDecoration: this.state.buttonTails ? "overline" : "none",
             }}
           >
             <Image
               src="./images/coin_tails.svg"
               size="tiny"
-              className={this.state.buttonHeads ? "" : "selectedCoin"}
+              className={this.state.buttonTails ? "selectedCoin" : ""}
               centered
               onClick={() => {
                 this.setState({
+                  buttonTails: true,
                   buttonHeads: false,
                   stakeMessage: stakeTailsMsg,
                 });
@@ -188,7 +196,10 @@ class StakePlay extends Component {
               fontStyle: "italic",
             }}
           >
-            {this.state.stakeMessage}
+            <TypeAnimation
+              cursor={true}
+              sequence={[this.state.stakeMessage, 2000]}
+            />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={2}>
@@ -204,9 +215,12 @@ class StakePlay extends Component {
               </Form.Field>
               <Message error header="Oops!" content={this.state.errorMsg} />
               <Button
-                style={{ width: "100%" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "var(--dark-color)",
+                  color: "var(--light-color)",
+                }}
                 loading={this.state.loading}
-                primary
                 type="submit"
               >
                 {process.env.stakeBtn ? process.env.stakeBtn : "I feel Lucky!"}

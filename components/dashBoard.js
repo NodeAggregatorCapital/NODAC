@@ -161,8 +161,8 @@ class DashBoard extends Component {
             <Grid.Column>Deter Count: {this.state.deterCount}</Grid.Column>
           </Grid.Row>
         </Grid>
-        <Table>
-          <Header>
+        <Table className="tableResultRows">
+          <Header style={{ color: "var(--light-color)" }}>
             <Row>
               <HeaderCell>ID</HeaderCell>
               <HeaderCell>Address</HeaderCell>
@@ -178,10 +178,14 @@ class DashBoard extends Component {
             <Row>
               <Cell colSpan="7" style={{ textAlign: "center" }}>
                 <Icon
-                  color={this.state.filterMine ? "blue" : "black"}
                   name="chart area"
                   onClick={this.handleFilter}
-                  style={{ cursor: "pointer" }}
+                  style={{
+                    cursor: "pointer",
+                    color: this.state.filterMine
+                      ? "var(--light-color)"
+                      : "var(--dark-color)",
+                  }}
                   size="big"
                 />
                 {filterTxt}

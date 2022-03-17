@@ -1,13 +1,24 @@
-@import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono:regular,bold,italic&subset=latin,latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Orbitron:regular,bold,italic&subset=latin,latin-ext");
+
+:root {
+  --dark-color: #2f455c;
+  --light-color: #75d3bb;
+}
+
+body {
+  background-color: white;
+  color: var(--dark-color);
+}
 
 .headerFont {
-  font-family: "Share Tech Mono";
+  font-family: "Orbitron"; /*"Share Tech Mono";*/
   font-size: 30px;
   text-align: center;
 }
 
 .selectedCoin {
-  border: blue thick dashed;
+  border: thick dashed;
+  border-color: #75d3bb;
   border-radius: 50%;
   margin-bottom: 20px;
 }
