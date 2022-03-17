@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Table, Icon } from "semantic-ui-react";
 import web3 from "../Blockchain/web3";
-import flip from "../Blockchain/flip";
 
 class ResultRow extends Component {
   state = { errMessage: "", loading: false };
 
   render() {
     const { Row, Cell } = Table;
-    const { id, stake, onResponse } = this.props;
+    const { id, stake, onResponse, filter } = this.props;
 
     let resultLabel = "--";
     if (stake._result == 1) resultLabel = "Aped";
@@ -32,10 +31,17 @@ class ResultRow extends Component {
         <Cell style={{ textAlign: "center" }}>
           {stake._settled === true ? (
             <Icon name="check" style={{ color: "var(--light-color)" }} />
-          ) : (
+          ) : stake._staker === filter ? (
             <Icon
               name="shopping cart"
               style={{ cursor: "pointer", color: "var(--light-color)" }}
+              onClick={onResponse}
+              stakeid={id + 1}
+            />
+          ) : (
+            <Icon
+              name="clock"
+              style={{ color: "var(--light-color)" }}
               onClick={onResponse}
               stakeid={id + 1}
             />
