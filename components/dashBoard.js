@@ -155,22 +155,22 @@ class DashBoard extends Component {
           streak={this.state.streak}
         />
         <Grid textAlign="center">
-          <Grid.Row columns={3}>
+          <Grid.Row columns={5}>
             <Grid.Column>Stake Count: {this.state.stakeCount}</Grid.Column>
             <Grid.Column>Contract Balance: {this.state.balance}</Grid.Column>
             <Grid.Column>Deter Count: {this.state.deterCount}</Grid.Column>
           </Grid.Row>
         </Grid>
         <Table className="tableResultRows">
-          <Header style={{ color: "var(--light-color)" }}>
-            <Row>
-              <HeaderCell>ID</HeaderCell>
-              <HeaderCell>Address</HeaderCell>
-              <HeaderCell>Time</HeaderCell>
-              <HeaderCell>AVAX Amount</HeaderCell>
-              <HeaderCell>Token Amount</HeaderCell>
-              <HeaderCell>Result</HeaderCell>
-              <HeaderCell>Settled</HeaderCell>
+          <Header>
+            <Row className="tableCellHeader">
+              <HeaderCell className="tableCellHeader">ID</HeaderCell>
+              <HeaderCell className="tableCellHeader">Address</HeaderCell>
+              <HeaderCell className="tableCellHeader">Time</HeaderCell>
+              <HeaderCell className="tableCellHeader">AVAX Amount</HeaderCell>
+              <HeaderCell className="tableCellHeader">Token Amount</HeaderCell>
+              <HeaderCell className="tableCellHeader">Result</HeaderCell>
+              <HeaderCell className="tableCellHeader">Settled</HeaderCell>
             </Row>
           </Header>
           <Body>

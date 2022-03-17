@@ -8,18 +8,18 @@ export default (props) => {
   const [balance, setBalance] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("Click to Connect");
   const appTitle = !!process.env.appTitle ? process.env.appTitle : "Flip Coin";
-  const AppLogo = "/images/Logo.jpeg";
+  const AppLogo = "/images/Logo.png";
 
   //setBalance(props.balance);
 
   return (
-    <Menu style={{ marginTop: "20px" }}>
+    <Menu style={{ marginTop: "20px", backgroundColor: "#333" }}>
       <Menu.Item>
-        {AppLogo !== "" ? <Image src={AppLogo} size="tiny" /> : appTitle}
+        {AppLogo !== "" ? <Image src={AppLogo} size="small" /> : appTitle}
       </Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item style={{ backgroundColor: "var(--light-color)" }}>
-          <Icon name="bitcoin" alt="Your Balance" size="large" />
+          <Icon name="bitcoin" alt="Your Balance" size="big" />
           {props.balance.substring(0, 5)}
         </Menu.Item>
         <Menu.Item

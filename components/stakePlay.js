@@ -206,18 +206,29 @@ class StakePlay extends Component {
           <Grid.Column>
             <Form onSubmit={this.onSubmit} error={this.state.errorMsg != ""}>
               <Form.Field>
-                <label style={{ textAlign: "center" }}>{amount}</label>
+                <label
+                  style={{
+                    textAlign: "center",
+                    fontSize: "16px",
+                    color: "var(--dark-color)",
+                  }}
+                >
+                  {amount}
+                </label>
                 <input
                   placeholder={minPlaceholder}
                   value={this.state.stakeAmount}
                   onChange={this.onChange}
+                  style={{ height: "60px" }}
                 />
               </Form.Field>
               <Message error header="Oops!" content={this.state.errorMsg} />
               <Button
                 style={{
                   width: "100%",
+                  padding: "20px",
                   backgroundColor: "var(--dark-color)",
+                  fontSize: "20px",
                   color: "var(--light-color)",
                 }}
                 loading={this.state.loading}

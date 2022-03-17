@@ -15,7 +15,12 @@ class ResultRow extends Component {
     else if (stake._result == 2) resultLabel = "Rekt";
 
     return (
-      <Row style={{ backgroundColor: stake._settled ? "#ffc1cc" : "" }}>
+      <Row
+        style={{
+          backgroundColor: stake._settled ? "var(--dark-color" : "",
+          color: stake._settled ? "white" : "var(--dark-color)",
+        }}
+      >
         <Cell>{id + 1}</Cell>
         <Cell>{stake._staker.substring(0, 6)}</Cell>
         <Cell>{stake._timestamp}</Cell>
@@ -26,11 +31,11 @@ class ResultRow extends Component {
         </Cell>
         <Cell style={{ textAlign: "center" }}>
           {stake._settled === true ? (
-            <Icon name="check" style={{ color: "var(--dark-color)" }} />
+            <Icon name="check" style={{ color: "var(--light-color)" }} />
           ) : (
             <Icon
               name="shopping cart"
-              style={{ cursor: "pointer", color: "var(--dark-color)" }}
+              style={{ cursor: "pointer", color: "var(--light-color)" }}
               onClick={onResponse}
               stakeid={id + 1}
             />
