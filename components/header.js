@@ -17,27 +17,15 @@ export default (props) => {
       <Menu.Item>
         {AppLogo !== "" ? <Image src={AppLogo} size="small" /> : appTitle}
       </Menu.Item>
-      <Menu.Item
-        style={{
-          color: "white",
-          fontStyle: "italic",
-        }}
-      >
-        <h1 className="headerFont">{appTitle}</h1>
+      <Menu.Item>
+        <h1 className="AppTitle">{appTitle}</h1>
       </Menu.Item>
       <Menu.Menu position="right">
-        <Menu.Item style={{ backgroundColor: "var(--light-color)" }}>
-          <Icon name="bitcoin" alt="Your Balance" size="big" />
-          {props.balance.substring(0, 5)}
+        <Menu.Item className="WalletAmount">
+          <Icon name="bitcoin" alt="Your Balance" size="big" color="black" />
+          {props.balance ? props.balance.substring(0, 5) : "--"}
         </Menu.Item>
-        <Menu.Item
-          style={{
-            backgroundColor: "var(--dark-color)",
-            color: "white",
-            borderRadus: "5px",
-            fontWeight: "bold",
-          }}
-        >
+        <Menu.Item className="WalletInfo">
           {active ? account.substring(0, 6) : ""}
         </Menu.Item>
       </Menu.Menu>
