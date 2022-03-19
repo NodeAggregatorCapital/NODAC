@@ -7,7 +7,9 @@ import flip from "../Blockchain/flip";
 class StakePlay extends Component {
   state = {
     stakeAmount: "",
-    stakeMessage: "Awaiting user selection...",
+    stakeMessage: !!process.env.tagline
+      ? process.env.tagline
+      : "Waiting user selection...",
     errorMsg: "",
     loading: false,
   };
@@ -26,6 +28,11 @@ class StakePlay extends Component {
           errorMsg: "Minimum Amount is " + this.props.minStake,
         });
         throw { message: "Minimum Amount is " + this.props.minStake };
+      } else if (this.state.stakeAmount > this.props.maxStake) {
+        this.setState({
+          errorMsg: "Maximum Amount is " + this.props.maxStake,
+        });
+        throw { message: "Maximum Amount is " + this.props.maxStake };
       }
       this.setState({ loading: true });
       //If any error messages are on screen, reset them before attempting next change.
@@ -101,11 +108,11 @@ class StakePlay extends Component {
       : "You're staking TAILS!!!";
 
     return (
-      <Grid centered style={{ marginTop: "40px" }}>
+      <Grid className="GridContainer" centered>
         <Grid.Row
           columns={7}
           verticalAlign="bottom"
-          style={{ marginBottom: "20px" }}
+          style={{ marginBottom: "20px", marginTop: "20px" }}
         >
           <Grid.Column
             style={{
@@ -119,7 +126,7 @@ class StakePlay extends Component {
               src="./images/coin_heads.svg"
               size="tiny"
               centered
-              className={this.state.buttonHeads ? "selectedCoin" : ""}
+              className={this.state.buttonHeads ? "selectedCoin" : "coin"}
               onClick={() => {
                 this.setState({
                   buttonTails: false,
@@ -175,7 +182,7 @@ class StakePlay extends Component {
             <Image
               src="./images/coin_tails.svg"
               size="tiny"
-              className={this.state.buttonTails ? "selectedCoin" : ""}
+              className={this.state.buttonTails ? "selectedCoin" : "coin"}
               centered
               onClick={() => {
                 this.setState({
@@ -189,20 +196,14 @@ class StakePlay extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1}>
-          <Grid.Column
-            className="headerFont"
-            style={{
-              textAlign: "center",
-              fontStyle: "italic",
-            }}
-          >
+          <Grid.Column className="headerFont stakeMsgContainer">
             <TypeAnimation
               cursor={true}
               sequence={[this.state.stakeMessage, 2000]}
             />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row columns={2}>
+        <Grid.Row columns={3}>
           <Grid.Column>
             <Form onSubmit={this.onSubmit} error={this.state.errorMsg != ""}>
               <Form.Field>
@@ -219,23 +220,13 @@ class StakePlay extends Component {
                   placeholder={minPlaceholder}
                   value={this.state.stakeAmount}
                   onChange={this.onChange}
-                  style={{ height: "60px" }}
+                  className="stakeAmountInput"
                 />
               </Form.Field>
               <Message error header="Oops!" content={this.state.errorMsg} />
-              <Button
-                style={{
-                  width: "100%",
-                  padding: "20px",
-                  backgroundColor: "var(--dark-color)",
-                  fontSize: "20px",
-                  color: "var(--light-color)",
-                }}
-                loading={this.state.loading}
-                type="submit"
-              >
+              <button className="stakeBtn" type="submit">
                 {process.env.stakeBtn ? process.env.stakeBtn : "I feel Lucky!"}
-              </Button>
+              </button>
             </Form>
           </Grid.Column>
         </Grid.Row>

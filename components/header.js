@@ -13,9 +13,17 @@ export default (props) => {
   //setBalance(props.balance);
 
   return (
-    <Menu style={{ marginTop: "20px", backgroundColor: "#333" }}>
+    <Menu className="MenuContainer">
       <Menu.Item>
         {AppLogo !== "" ? <Image src={AppLogo} size="small" /> : appTitle}
+      </Menu.Item>
+      <Menu.Item
+        style={{
+          color: "white",
+          fontStyle: "italic",
+        }}
+      >
+        <h1 className="headerFont">{appTitle}</h1>
       </Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item style={{ backgroundColor: "var(--light-color)" }}>

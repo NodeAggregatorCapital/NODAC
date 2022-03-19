@@ -130,9 +130,6 @@ class DashBoard extends Component {
 
   render() {
     const { Header, Row, Cell, HeaderCell, Body } = Table;
-    const tagline = !!process.env.tagline
-      ? process.env.tagline
-      : "Try your luck!";
 
     const filterTxt = this.state.filterMine
       ? !!process.env.myFilterIconTxt
@@ -147,8 +144,6 @@ class DashBoard extends Component {
         balance={this.state.balanceAccount}
         currentAccount={this.state.currentAccount}
       >
-        <Image src={CoinImg} size="small" centered />
-        <h3 className="headerFont">{tagline}</h3>
         <StakePlay
           minStake={this.state.minStake}
           maxStake={this.state.maxStake}
