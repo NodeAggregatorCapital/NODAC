@@ -38,6 +38,9 @@ body {
   background-color: #ccc;
   background-image: url("./images/textures/metallic-texture.jpg") !important;
   background-size: cover;
+  box-shadow: 3px 3px 20px 0px var(--dark-color) inset;
+  outline: 1px solid #999;
+  outline-offset: 0px;
 }
 
 .selectedCoin {
