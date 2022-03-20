@@ -12,6 +12,15 @@ body {
 }
 
 /************************
+    INTRO.JS
+************************/
+.introText {
+  font-size: 30px !important;
+  text-align: center !important;
+  font-style: italic !important;
+}
+
+/************************
     HEADER.JS
 ************************/
 .MenuContainer {

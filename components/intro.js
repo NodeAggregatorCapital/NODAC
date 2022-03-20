@@ -6,9 +6,13 @@ const CoinImg = "/images/coin_spin_bg.gif";
 
 export default (props) => {
   return (
-    <div style={{ marginTop: "40px" }}>
+    <div
+      style={{
+        marginTop: "40px",
+      }}
+    >
       <Image src={CoinImg} size="small" centered />
-      <h3 className="headerFont">Connect to your wallet to play!!</h3>
+      <h3 className="introText">Connect to your wallet to play!!</h3>
       {props.children}
     </div>
   );

@@ -40,7 +40,7 @@ export default function Home(props) {
                 >
                   <img
                     src="./images/Metamask-logo.svg"
-                    alt="my image"
+                    alt="MetaMask"
                     width="260px"
                     height="30px"
                   />
