@@ -149,11 +149,11 @@ class DashBoard extends Component {
           maxStake={this.state.maxStake}
           streak={this.state.streak}
         />
-        <Grid textAlign="center">
+        <Grid textAlign="center" style={{ marginTop: "40px" }}>
           <Grid.Row columns={5}>
-            <Grid.Column>Stake Count: {this.state.stakeCount}</Grid.Column>
+            <Grid.Column>Stakes: {this.state.stakeCount}</Grid.Column>
             <Grid.Column>Contract Balance: {this.state.balance}</Grid.Column>
-            <Grid.Column>Deter Count: {this.state.deterCount}</Grid.Column>
+            <Grid.Column>Determinations: {this.state.deterCount}</Grid.Column>
           </Grid.Row>
         </Grid>
         <Table className="tableResultRows">
