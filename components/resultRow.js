@@ -42,7 +42,6 @@ class ResultRow extends Component {
             <Icon
               name="clock"
               style={{ color: "var(--light-color)" }}
-              onClick={onResponse}
               stakeid={id + 1}
             />
           )}
