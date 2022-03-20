@@ -56,7 +56,7 @@ body {
   background-image: url("./images/textures/metallic-texture.jpg") !important;
   background-size: cover;
   box-shadow: 3px 3px 20px 3px var(--dark-color) inset, 0px 5px 10px 5px black;
-  outline: 1px solid #333;
+  outline: 1px solid #aaa;
   outline-offset: 0px;
 }
 
