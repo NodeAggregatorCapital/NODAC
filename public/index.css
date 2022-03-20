@@ -12,8 +12,6 @@ body {
 }
 
 .headerFont {
-  font-size: 30px !important;
-  text-align: center !important;
 }
 
 /************************
@@ -28,9 +26,8 @@ body {
 
 .AppTitle {
   font-size: 30px !important;
-  text-align: center !important;
-
   font-style: italic;
+  text-align: center !important;
 
   background-color: black !important;
   color: transparent !important;
@@ -82,8 +79,9 @@ body {
 }
 
 .stakeMsgContainer {
+  font-size: 30px !important;
   text-align: center !important;
-  font-style: italic;
+  font-style: italic !important;
   background-color: rgba(30, 30, 30, 0.1);
 }
 

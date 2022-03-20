@@ -98,7 +98,7 @@ class StakePlay extends Component {
 
   render() {
     const { minStake, maxStake, streak } = this.props;
-    const minPlaceholder = "Minimum Amount: " + minStake + " AVAX";
+    const minPlaceholder = "Min Amount: " + minStake + " AVAX";
     const amount = !!process.env.amountTxt ? process.env.amountTxt : "Amount";
     const stakeHeadsMsg = !!process.env.heads
       ? process.env.heads
@@ -196,7 +196,7 @@ class StakePlay extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1}>
-          <Grid.Column className="headerFont stakeMsgContainer">
+          <Grid.Column className="stakeMsgContainer">
             <TypeAnimation
               cursor={true}
               sequence={[this.state.stakeMessage, 2000]}
