@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    contractAddress: "0xAbaf7922103BeDdbB825728B4106391AA66e3144", //Address of the Compiled Contract on the Blockchain
     //Titles, Labels and Taglines
     appTitle: "Double or Nothin'", //Title of the app - header.js
     tagline: "Awaiting user selection...", //Tagline displayed below coin image - dashboard.js
