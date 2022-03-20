@@ -50,13 +50,13 @@ body {
     STAKEPLAY.JS
 ************************/
 .GridContainer {
-  border: 20px solid var(--dark-color);
+  border: 20px solid #666;
   border-radius: 100px;
   background-color: #ccc;
   background-image: url("./images/textures/metallic-texture.jpg") !important;
   background-size: cover;
   box-shadow: 3px 3px 20px 3px var(--dark-color) inset, 0px 5px 10px 5px black;
-  outline: 1px solid black;
+  outline: 1px solid #333;
   outline-offset: 0px;
 }
 
