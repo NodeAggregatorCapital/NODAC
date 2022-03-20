@@ -1,3 +1,12 @@
+/*********************************************
+ * TO RUN:    > node compile
+ *
+ * Checks for the "build" directory.
+ * Deletes it if it and everything inside if it exists
+ * Compiles the MaticStake.sol contract
+ * Creates "build" directory
+ * Creates ABI of each class from contract
+ */
 const path = require("path");
 const fse = require("fs-extra");
 const solc = require("solc");

@@ -1,3 +1,7 @@
+/****************************************************
+ * Creates all the required hooks to use with
+ * MetaMask
+ */
 import React, { useEffect, useState } from "react";
 import { injected } from "./connectors";
 import { useWeb3React } from "@web3-react/core";

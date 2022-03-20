@@ -43,7 +43,7 @@ class StakePlay extends Component {
       await flip.methods.stakeAVAX().send({
         from: accounts[0],
         value: web3.utils.toWei(this.state.stakeAmount, "ether"),
-      }); //call contribute from SOL Contract and pass in the amount
+      }); //stake users wage to the contract using their FIRST account
     } catch (err) {
       this.setState({ errorMsg: err.message }); //Capture the error event and display it to user
     } finally {

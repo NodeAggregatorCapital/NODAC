@@ -1,3 +1,8 @@
+/*******************************************************
+ * Creates an instance of the interface to the FLIP
+ * CONTRACT using its ABI.
+ */
+
 import web3 from "./web3";
 import Flip from "./build/Flip.json";
 

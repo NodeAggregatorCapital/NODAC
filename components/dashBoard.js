@@ -6,10 +6,15 @@ import Layout from "../components/layout";
 import ResultRow from "../components/resultRow";
 import StakePlay from "../components/stakePlay";
 
+const deployedAddress = process.env.contractAddress
+  ? process.env.contractAddress
+  : "0xAbaf7922103BeDdbB825728B4106391AA66e3144";
+
 const coinImgFileName = !!process.env.coinImg
   ? process.env.coinImg
   : "coin_spin_bg.gif";
-const CoinImg = `/images/${coinImgFileName}`;
+
+const CoinImg = `/images/${coinImgFileName}`; //Spinning coin
 
 class DashBoard extends Component {
   state = {
@@ -19,6 +24,7 @@ class DashBoard extends Component {
     filterMine: false,
   };
 
+  //Retrieves the STAKE ID from a specific STAKE object
   onResponse = async (stake) => {
     try {
       const stakeid = stake.target.getAttribute("stakeid");
@@ -30,6 +36,7 @@ class DashBoard extends Component {
     }
   };
 
+  //Renders all the STAKING DETAILS of each stake diplsayed from the contract
   renderStakes(currentAccount) {
     try {
       const limitResults = !this.state.filterMine
@@ -66,7 +73,7 @@ class DashBoard extends Component {
   async componentDidMount() {
     try {
       const balance = await web3.utils.fromWei(
-        await web3.eth.getBalance("0xAbaf7922103BeDdbB825728B4106391AA66e3144"),
+        await web3.eth.getBalance(deployedAddress),
         "ether"
       );
       const stakeCount = await flip.methods.StakeCount().call();

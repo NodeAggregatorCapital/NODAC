@@ -1,3 +1,9 @@
+/********************************************
+ * Instantiates and creates a ready to use web3
+ * object and tries to connect to contract on
+ * page load
+ */
+
 import Web3 from "web3";
 
 let web3;
