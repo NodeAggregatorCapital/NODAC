@@ -25,14 +25,14 @@ class StakePlay extends Component {
         throw { message: "Please enter a minimum amount" };
       } else if (this.state.stakeAmount < this.props.minStake) {
         this.setState({
-          errorMsg: "Minimum Amount is " + this.props.minStake,
+          errorMsg: "Min Amount is " + this.props.minStake,
         });
-        throw { message: "Minimum Amount is " + this.props.minStake };
+        throw { message: "Min Amount is " + this.props.minStake };
       } else if (this.state.stakeAmount > this.props.maxStake) {
         this.setState({
-          errorMsg: "Maximum Amount is " + this.props.maxStake,
+          errorMsg: "Max Amount is " + this.props.maxStake,
         });
-        throw { message: "Maximum Amount is " + this.props.maxStake };
+        throw { message: "Max Amount is " + this.props.maxStake };
       }
       this.setState({ loading: true });
       //If any error messages are on screen, reset them before attempting next change.

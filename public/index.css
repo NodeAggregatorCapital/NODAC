@@ -23,13 +23,14 @@ body {
   margin-top: 20px !important;
   margin-bottom: 50px !important;
   background-color: #333 !important;
-  box-shadow: 0px 5px 30px 5px black !important;
+  box-shadow: 0px 5px 10px 5px black !important;
 }
 
 .AppTitle {
   font-size: 30px !important;
   text-align: center !important;
   color: white !important;
+  font-style: italic;
 }
 
 .WalletAmount {
@@ -54,7 +55,7 @@ body {
   background-image: url("./images/textures/metallic-texture.jpg") !important;
   background-size: cover;
   box-shadow: 3px 3px 20px 3px var(--dark-color) inset, 0px 5px 10px 5px black;
-  outline: 2px solid black;
+  outline: 1px solid black;
   outline-offset: 0px;
 }
 
@@ -105,6 +106,10 @@ body {
   box-shadow: 0px 6px 0px #656c72, 0px 3px 15px rgba(0, 0, 0, 0.4),
     inset 0px 1px 0px rgba(255, 255, 255, 0.3),
     inset 0px 0px 3px rgba(255, 255, 255, 0.5) !important;
+}
+
+.stakeAmountInput::-webkit-input-placeholder {
+  font-size: 16px !important;
 }
 
 .luckBtn {
