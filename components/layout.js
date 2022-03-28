@@ -5,7 +5,11 @@ import Header from "./header";
 export default (props) => {
   return (
     <Container>
-      <Header balance={props.balance} currentAccount={props.currentAccount} />
+      <Header
+        balance={props.balance}
+        balanceToken={props.balanceToken}
+        currentAccount={props.currentAccount}
+      />
       {props.children}
     </Container>
   );

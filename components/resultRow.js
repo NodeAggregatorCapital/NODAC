@@ -24,14 +24,14 @@ class ResultRow extends Component {
         <Cell>{stake._staker.substring(0, 6)}</Cell>
         <Cell>{stake._timestamp}</Cell>
         <Cell>{web3.utils.fromWei(stake._avaxamount, "ether")}</Cell>
-        <Cell>{stake._tokenamount}</Cell>
+        <Cell>{web3.utils.fromWei(stake._tokenamount, "ether")}</Cell>
         <Cell style={{ color: stake._result == 1 ? "Green" : "Red" }}>
           {resultLabel}
         </Cell>
         <Cell style={{ textAlign: "center" }}>
           {stake._settled === true ? (
             <Icon name="check" style={{ color: "var(--light-color)" }} />
-          ) : stake._staker === filter ? (
+          ) : stake._result == 1 ? (
             <Icon
               name="shopping cart"
               style={{ cursor: "pointer", color: "var(--light-color)" }}

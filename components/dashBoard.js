@@ -16,6 +16,30 @@ const coinImgFileName = !!process.env.coinImg
 
 const CoinImg = `/images/${coinImgFileName}`; //Spinning coin
 
+const tokenAddress = process.env.tokenAddress
+  ? process.env.tokenAddress
+  : "0x6ce8dA28E2f864420840cF74474eFf5fD80E65B8"; //BTCB Address
+
+// The minimum ABI to get ERC20 Token balance
+const minABI = [
+  // balanceOf
+  {
+    constant: true,
+    inputs: [{ name: "_owner", type: "address" }],
+    name: "balanceOf",
+    outputs: [{ name: "balance", type: "uint256" }],
+    type: "function",
+  },
+  // decimals
+  {
+    constant: true,
+    inputs: [],
+    name: "decimals",
+    outputs: [{ name: "", type: "uint8" }],
+    type: "function",
+  },
+];
+
 class DashBoard extends Component {
   state = {
     userStakes: "",
@@ -72,10 +96,23 @@ class DashBoard extends Component {
 
   async componentDidMount() {
     try {
+      const tokenContract = new web3.eth.Contract(minABI, tokenAddress);
+
       const balance = await web3.utils.fromWei(
         await web3.eth.getBalance(deployedAddress),
         "ether"
       );
+
+      let balanceToken;
+      try {
+        balanceToken = await web3.utils.fromWei(
+          await tokenContract.methods.balanceOf(deployedAddress).call(),
+          "ether"
+        );
+      } catch (e) {
+        balanceToken = "0";
+      }
+
       const stakeCount = await flip.methods.StakeCount().call();
       const deterCount = await flip.methods.DeterminationCount().call();
       const minStake = await web3.utils.fromWei(
@@ -84,6 +121,15 @@ class DashBoard extends Component {
       );
       const maxStake = await web3.utils.fromWei(
         await flip.methods.avaxmax().call(),
+        "ether"
+      );
+
+      const minStakeToken = await web3.utils.fromWei(
+        await flip.methods.min().call(),
+        "ether"
+      );
+      const maxStakeToken = await web3.utils.fromWei(
+        await flip.methods.max().call(),
         "ether"
       );
 
@@ -105,10 +151,22 @@ class DashBoard extends Component {
 
       const accounts = await web3.eth.getAccounts();
       const currentAccount = accounts[0];
+
+      let balanceAccountToken;
+      try {
+        balanceAccountToken = await web3.utils.fromWei(
+          await tokenContract.methods.balanceOf(currentAccount).call(),
+          "ether"
+        );
+      } catch (e) {
+        balanceAccountToken = "0";
+      }
+
       const balanceAccount = await web3.utils.fromWei(
         await web3.eth.getBalance(currentAccount),
         "ether"
       );
+
       const userStakes = "";
 
       const streak = await flip.methods.Streak(currentAccount).call();
@@ -116,14 +174,18 @@ class DashBoard extends Component {
       this.setState({
         currentAccount: accounts[0],
         balanceAccount,
+        balanceAccountToken,
         userStakes,
         balance,
+        balanceToken,
         stakeCount,
         stakes,
         deterCount,
         determinations,
         minStake,
         maxStake,
+        minStakeToken,
+        maxStakeToken,
         streak,
       });
     } catch (e) {
@@ -149,18 +211,40 @@ class DashBoard extends Component {
     return (
       <Layout
         balance={this.state.balanceAccount}
+        balanceToken={this.state.balanceAccountToken}
         currentAccount={this.state.currentAccount}
       >
         <StakePlay
+          balance={this.state.balanceAccount}
+          balanceToken={this.state.balanceAccountToken}
           minStake={this.state.minStake}
           maxStake={this.state.maxStake}
+          minStakeToken={this.state.minStakeToken}
+          maxStakeToken={this.state.maxStakeToken}
           streak={this.state.streak}
         />
         <Grid textAlign="center" style={{ marginTop: "40px" }}>
           <Grid.Row columns={5}>
-            <Grid.Column>Stakes: {this.state.stakeCount}</Grid.Column>
-            <Grid.Column>Contract Balance: {this.state.balance}</Grid.Column>
-            <Grid.Column>Determinations: {this.state.deterCount}</Grid.Column>
+            <Grid.Column>
+              Stakes:
+              <br />
+              {this.state.stakeCount}
+            </Grid.Column>
+            <Grid.Column>
+              Balance AVAX:
+              <br />
+              {this.state.balance}
+            </Grid.Column>
+            <Grid.Column>
+              Balance NODAC:
+              <br />
+              {this.state.balanceToken}
+            </Grid.Column>
+            <Grid.Column>
+              Determinations:
+              <br />
+              {this.state.deterCount}
+            </Grid.Column>
           </Grid.Row>
         </Grid>
         <Table className="tableResultRows">
