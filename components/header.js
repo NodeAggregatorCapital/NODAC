@@ -10,6 +10,7 @@ export default (props) => {
   const [currentAccount, setCurrentAccount] = useState("Click to Connect");
   const appTitle = !!process.env.appTitle ? process.env.appTitle : "Flip Coin";
   const AppLogo = "/images/Logo.png";
+  const CoinAvax = "/images/coin_avax.png";
 
   //setBalance(props.balance);
 
@@ -23,13 +24,12 @@ export default (props) => {
       </Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item className="WalletAmount">
-          <Menu text vertical style={{ padding: "0px" }}>
+          <Menu text>
             <Menu.Item>
-              <Icon
-                name="bitcoin"
-                alt="Your Balance"
-                size="big"
-                color="black"
+              <Image
+                src={CoinAvax}
+                alt="AVAX"
+                style={{ width: "40px", paddingRight: "10px" }}
               />
               {props.balance ? props.balance.substring(0, 5) : "--"}
             </Menu.Item>

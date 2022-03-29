@@ -236,13 +236,13 @@ class StakePlay extends Component {
     const tokenName = this.state.minPlaceholderTxt.split(" ").pop();
 
     try {
-      if (this.state.stakeAmount == "") {
+      if (parseFloat(this.state.stakeAmount) == "") {
         this.setState({
           errorMsg: "Please enter a minimum amount",
         });
         throw { message: "Please enter a minimum amount" };
       } else if (
-        this.state.stakeAmount <
+        parseFloat(this.state.stakeAmount) <
         (tokenName === "NODAC" ? this.props.minStakeToken : this.props.minStake)
       ) {
         this.setState({
@@ -260,7 +260,7 @@ class StakePlay extends Component {
               : this.props.minStake),
         };
       } else if (
-        this.state.stakeAmount >
+        parseFloat(this.state.stakeAmount) >
         (tokenName === "NODAC" ? this.props.maxStakeToken : this.props.maxStake)
       ) {
         this.setState({
@@ -278,7 +278,7 @@ class StakePlay extends Component {
               : this.props.maxStake),
         };
       } else if (
-        this.state.stakeAmount >
+        parseFloat(this.state.stakeAmount) >
         (tokenName === "NODAC" ? this.props.balanceToken : this.props.balance)
       ) {
         this.setState({
@@ -317,25 +317,19 @@ class StakePlay extends Component {
             .then(this.setState({ approved: true }));
         } else {
           //if already approved then stake the approved amount
+          const totalAmount = this.state.stakeAmount + this.props.oracleFee;
+          console.log("Total Amount: ", totalAmount);
           await flip.methods
             .stake(web3.utils.toWei(this.state.stakeAmount, "ether"))
             .send({
               from: accounts[0],
-              value: web3.utils.toWei("0.05", "ether"),
+              value: web3.utils.toWei(this.props.oracleFee, "ether"),
             }); //stake users wage to the contract using their FIRST account
         }
-        // await tokenContract.methods
-        //   .transfer(
-        //     accounts[0],
-        //     web3.utils.toWei(this.state.stakeAmount, "ether")
-        //   )
-        //   .send({
-        //     from: accounts[0],
-        //   });
       } else {
         await flip.methods.stakeAVAX().send({
           from: accounts[0],
-          value: web3.utils.toWei(this.state.stakeAmount, "ether"),
+          value: web3.utils.toWei(totalAmount, "ether"),
         }); //stake users wage to the contract using their FIRST account
       }
     } catch (err) {

@@ -113,6 +113,10 @@ class DashBoard extends Component {
         balanceToken = "0";
       }
 
+      const oracleFee = await web3.utils.fromWei(
+        await flip.methods.oraclefee().call(),
+        "ether"
+      );
       const stakeCount = await flip.methods.StakeCount().call();
       const deterCount = await flip.methods.DeterminationCount().call();
       const minStake = await web3.utils.fromWei(
@@ -178,6 +182,7 @@ class DashBoard extends Component {
         userStakes,
         balance,
         balanceToken,
+        oracleFee,
         stakeCount,
         stakes,
         deterCount,
@@ -215,6 +220,7 @@ class DashBoard extends Component {
         currentAccount={this.state.currentAccount}
       >
         <StakePlay
+          oracleFee={this.state.oracleFee}
           balance={this.state.balanceAccount}
           balanceToken={this.state.balanceAccountToken}
           minStake={this.state.minStake}
@@ -241,9 +247,9 @@ class DashBoard extends Component {
               {this.state.balanceToken}
             </Grid.Column>
             <Grid.Column>
-              Determinations:
+              Oracle Fee:
               <br />
-              {this.state.deterCount}
+              {this.state.oracleFee}
             </Grid.Column>
           </Grid.Row>
         </Grid>
