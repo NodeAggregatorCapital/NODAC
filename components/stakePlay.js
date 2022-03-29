@@ -317,8 +317,6 @@ class StakePlay extends Component {
             .then(this.setState({ approved: true }));
         } else {
           //if already approved then stake the approved amount
-          const totalAmount = this.state.stakeAmount + this.props.oracleFee;
-          console.log("Total Amount: ", totalAmount);
           await flip.methods
             .stake(web3.utils.toWei(this.state.stakeAmount, "ether"))
             .send({
@@ -327,9 +325,12 @@ class StakePlay extends Component {
             }); //stake users wage to the contract using their FIRST account
         }
       } else {
+        //AVAX TOKEN
+        const totalAmount =
+          parseFloat(this.state.stakeAmount) + parseFloat(this.props.oracleFee);
         await flip.methods.stakeAVAX().send({
           from: accounts[0],
-          value: web3.utils.toWei(totalAmount, "ether"),
+          value: web3.utils.toWei(totalAmount.toString(), "ether"),
         }); //stake users wage to the contract using their FIRST account
       }
     } catch (err) {
