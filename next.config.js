@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    contractAddress: "0xAbaf7922103BeDdbB825728B4106391AA66e3144", //Address of the Compiled Contract on the Blockchain
+    contractAddress: "0xe633c7f12dC0994Ef181324b1f5450De8EAE51F5", //Address of the Compiled Contract on the Blockchain
     tokenAddress: "0x803e78269f7F013b7D13ba13243Be10C66418a70", //Address of the NODAC Token Contract on the Blockchain
     //Titles, Labels and Taglines
     appTitle: "Double or Nothin'", //Title of the app - header.js
