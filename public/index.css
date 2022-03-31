@@ -264,3 +264,9 @@ body {
 .tableCellHeader {
   background-color: var(--light-color) !important;
 }
+
+.disclaimer {
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+}
