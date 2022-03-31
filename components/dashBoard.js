@@ -285,6 +285,9 @@ class DashBoard extends Component {
             </Row>
           </Body>
         </Table>
+        <div className="disclaimer">
+          All stakes are subject to a 3.5% staking fee
+        </div>
       </Layout>
     );
   }
